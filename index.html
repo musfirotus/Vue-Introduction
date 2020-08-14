@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <head>
+        <title>Vue App</title>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{ message }}</p>
+            <input type="text">
+            <ol>
+                <li v-for="f in fruits" :key="i">
+                    {{ f.text }}
+                </li>
+            </ol>
+            <p>capital : {{ capital }}</p>
+            <p>capital by event: {{ message}} <button v-on:click="capitalize"></button></p>
+        </div>
+
+        <!-- File Script-->
+        <script src="./assets/vendor/vue.js"></script>
+        <script src="./assets/js/app.js"></script>
+    </body>
+</html>
