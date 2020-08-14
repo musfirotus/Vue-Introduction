@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/styles.css">
-        <title>Tailwind CSS Demo</title>
-    </head>
-    <body>
-        <div class="h-64">
-            <div class="p-4 m-4 bg-green-600">
-                <h1 class="text-2xl font-bold text-white">Tailwind CSS Demo</h1>
-            </div>
-            <div class="p-4 m-4 bg-green-300 h-full">
-                <h2 class="text-green-900">Have much fun using Tailwind CSS</h2>
-            </div>  
-        </div>
 
-        <!-- File Script-->
-        <script src="./assets/vendor/vue.js"></script>
-        <script src="./assets/js/app.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="assets/css/styles.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Tailwind CSS Demo</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-xs-12 col-md-4">
+                    <form>
+                        <div class="form-group">
+                            <label for="todolist">Todolist</label>
+                            <input type="text" class="form-control" ref="textbox" :keyup.enter="addTodo"
+                                v-model="newtodolist" placeholder="Input todolist here...">
+                        </div>
+                        <button type="button" class="btn btn-primary" v-on:click="addTodo">Save</button>
+                    </form>
+                </div>
+                <div class="col-xs-12 col-md-8 pt-4">
+                    <ul class="list-group">
+                        <li class="list-group-item disabled" v-for="(todolist,index) in todolists" :key="index">
+                            {{todolist.text}}
+                            <button class="btn btn-danger btn-sm float-right" v-on:click="removeTodo(index)"> <span
+                                    class="fa fa-remove"></span></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- File Script-->
+    <script src="./assets/vendor/vue.js"></script>
+    <script src="./assets/js/app.js"></script>
+</body>
+
 </html>

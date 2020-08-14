@@ -1,36 +1,28 @@
-Vue.component('render-title',{
-    data() {
-    },
-    template:"<h1>{{title}}</h1>"
-})
-
 const app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Vue!',
-        fruits:[
-            {
-                id:1,
-                text: 'Apel'
+        todolists: [{
+                text: "Tutorial Todolist"
             },
             {
-                id:2,
-                text: 'Jeruk'
+                text: "Tutorial Vue JS"
             },
             {
-                id:3,
-                text: 'Pisang'
-            }
-        ]
-    },
-    computed: {
-        capital(){
-            return this.message.toUpperCase();
-        }
+                text: "Tutorial Angular 5"
+            },
+        ],
+        newtodolist: ""
     },
     methods: {
-        capitalize(){
-            const message = this.message
+        addTodo: function () {
+            this.todolists.push({
+                text: this.newtodolist
+            });
+            this.$refs.textbox.focus()
+            this.newtodolist = ""
+        },
+        removeTodo: function (index) {
+            this.todolists.splice(index, 1);
         }
-    },
+    }
 })

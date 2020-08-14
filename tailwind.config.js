@@ -3,6 +3,10 @@ module.exports = {
   theme: {
     extend: {},
   },
-  variants: {},
+  variants: {
+    // ...
+    margin: ['responsive'],
+    margin: ['responsive', 'hover', 'focus'],
+  },
   plugins: [],
 }
