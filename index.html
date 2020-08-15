@@ -4,38 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="assets/css/styles.css"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
     <title>Tailwind CSS Demo</title>
 </head>
 
 <body>
     <div id="app">
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col-xs-12 col-md-4">
-                    <form>
-                        <div class="form-group">
-                            <label for="todolist">Todolist</label>
-                            <input type="text" class="form-control" ref="textbox" :keyup.enter="addTodo"
-                                v-model="newtodolist" placeholder="Input todolist here...">
-                        </div>
-                        <button type="button" class="btn btn-primary" v-on:click="addTodo">Save</button>
-                    </form>
-                </div>
-                <div class="col-xs-12 col-md-8 pt-4">
-                    <ul class="list-group">
-                        <li class="list-group-item disabled" v-for="(todolist,index) in todolists" :key="index">
+        <div class="container mx-auto my-24">
+            <div class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
+                <form class="w-full border border-purple-500 max-w-xs bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm text-center font-bold mb-2" for="todolist">Todolist</label>
+                        <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                        ref="textbox" v-model="newtodolist" placeholder="Input todolist here...">
+                    </div>
+                    <button type="button" class="bg-transparent hover:bg-purple-500 text-purple-700 font-semibold hover:text-white py-2 px-4 border border-purple-500 hover:border-transparent rounded" v-on:click="addTodo">Save</button>
+                </form>
+            </div>
+            <div class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
+                <div class="border border-purple-500 w-full max-w-2xl bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <ul class="list-group -mb-4">
+                        <li class="list-group-item disabled mb-4" v-for="(todolist,index) in todolists" :key="index">
                             {{todolist.text}}
-                            <button class="btn btn-danger btn-sm float-right" v-on:click="removeTodo(index)"> <span
-                                    class="fa fa-remove"></span></button>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full float-right" v-on:click="removeTodo(index)"> <span
+                                class="fa fa-remove">X</span></button>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mr-2 rounded-full float-right" v-on:click="removeTodo(index)"> <span
+                                    class="fa fa-remove">Done</span></button>
+                            <hr>
                         </li>
                     </ul>
                 </div>
             </div>
+            <p class="max-w-xl text-center text-gray-600 text-xs mx-auto">
+                Coded by Musfirotus
+            </p>
         </div>
     </div>
     <!-- File Script-->

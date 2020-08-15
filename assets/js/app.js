@@ -11,7 +11,8 @@ const app = new Vue({
                 text: "Tutorial Angular 5"
             },
         ],
-        newtodolist: ""
+        newtodolist: "",
+        done: false
     },
     methods: {
         addTodo: function () {
