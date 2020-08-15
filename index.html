@@ -34,8 +34,10 @@
                             <span v-bind:class="{'line-through': todolist.done}">{{todolist.text}}</span>
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full float-right" v-on:click="removeTodo(index)"> <span
                                 class="fa fa-remove">X</span></button>
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mr-2 rounded-full float-right" v-on:click="tDone(todolist)"> <span
-                                    class="fa fa-remove">Done</span></button>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mr-2 rounded-full float-right" v-on:click="tDone(todolist)">
+                                <span v-if="todolist.done == false">Done</span>
+                                <span v-if="todolist.done == true">UnDone</span>
+                            </button>
                             <hr>
                         </li>
                     </ul>

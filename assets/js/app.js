@@ -20,7 +20,7 @@ const app = new Vue({
             this.todolists.splice(index, 1);
         },
         tDone: function (todolist) {
-            todolist.done = true
+            todolist.done = !todolist.done
         }
     }
 })
