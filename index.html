@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
     <title>Tailwind CSS Demo</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,11 +29,12 @@
             <div class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
                 <div class="border border-purple-500 w-full max-w-2xl bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <ul class="list-group -mb-4">
-                        <li class="list-group-item disabled mb-4" v-for="(todolist,index) in todolists" :key="index">
-                            {{todolist.text}}
+                        <li class="list-group-item disabled mb-2 text-center" v-if="!todolists.length">Belum ada Tugas</li>
+                        <li class="list-group-item disabled mb-3" v-for="(todolist,index) in todolists" :key="index">
+                            <span v-bind:class="{'line-through': todolist.done}">{{todolist.text}}</span>
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full float-right" v-on:click="removeTodo(index)"> <span
                                 class="fa fa-remove">X</span></button>
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mr-2 rounded-full float-right" v-on:click="removeTodo(index)"> <span
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mr-2 rounded-full float-right" v-on:click="tDone(todolist)"> <span
                                     class="fa fa-remove">Done</span></button>
                             <hr>
                         </li>

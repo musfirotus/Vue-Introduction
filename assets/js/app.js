@@ -1,29 +1,26 @@
 const app = new Vue({
     el: '#app',
     data: {
-        todolists: [{
-                text: "Tutorial Todolist"
-            },
-            {
-                text: "Tutorial Vue JS"
-            },
-            {
-                text: "Tutorial Angular 5"
-            },
-        ],
+        todolists: [],
         newtodolist: "",
         done: false
     },
     methods: {
         addTodo: function () {
-            this.todolists.push({
-                text: this.newtodolist
-            });
-            this.$refs.textbox.focus()
-            this.newtodolist = ""
+            const text = this.newtodolist.trim()
+            if (text) {
+                this.todolists.push({
+                    text: text,
+                    done: false
+                });
+                this.newtodolist = ""
+            }
         },
         removeTodo: function (index) {
             this.todolists.splice(index, 1);
+        },
+        tDone: function (todolist) {
+            todolist.done = true
         }
     }
 })
